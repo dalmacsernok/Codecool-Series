@@ -1,0 +1,47 @@
+{%  extends "layout.html" %}
+{%  block title %}Most Rated Shows{%  endblock %}
+{%  block content %}
+<div id="body-wrapper">
+    <header class="clearfix">
+        <img id="header-logo" src="{{ url_for('static', filename='assets/codecool-logo.png') }}" alt="Codecool Logo">
+        <span id="header-title" class="title">Codecool Series DB</span>
+        <div id="header-auth">
+            <form style="display:inline-block" method="get" action="/">
+                <button type="submit">Back to Main Page</button>
+            </form>
+            <button type="button" id="bt-register">Register</button>
+            <button type="button" id="bt-login">Login</button>
+        </div>
+    </header>
+    <section>
+        <h1 class="title text-center">Most Rated Shows</h1>
+        {% block table %}
+            <div class="card">
+                <table>
+                    <thead>
+                    <tr>
+                        <th id="Title">Title</th>
+                        <th id="Year">Year</th>
+                        <th id="Runtime">Runtime</th>
+                        <th id="Rating">Rating</th>
+                        <th>Genres</th>
+                        <th>Trailer</th>
+                        <th>Homepage</th>
+                    </tr>
+                    </thead>
+                    <tbody id="most_rated_shows"></tbody>
+                </table>
+        </div>
+            {% endblock %}
+            <div class="card text-center" id="pagination">
+            </div>
+    </section>
+    <footer>
+        Copyright, bla-bla
+    </footer>
+</div>
+<div class="background">
+    <div class="dark-blue-layer"></div>
+    <div class="light-blue-layer"></div>
+</div>
+{% endblock %}

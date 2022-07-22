@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ details[0]["title"] }}{% endblock %}
+
+{% block content %}
+
+    <div class="card detailed-view">
+        <div class="trailer-container">
+            <div class="row">
+
+                {% if details[0]['trailer'] != None %}
+                    <iframe class="col col-third" src="https://www.youtube.com/embed/{{ details[0]['trailer'].split("=")[1] }}" height="300px"></iframe>
+                {% endif %}
+
+                <div class="col col-twothird">
+                    <div class="actor-container">
+
+                        <h2>{{ details[0]['title'] }}</h2>
+                        <p class="small grayed">{{ details[0]['runtime'] }}<span
+                                class="separator">|</span>{{ details[0]['genres'] }}<span
+                                class="separator">|</span>{{ details[0]['rating'] }}⭐</p>
+                        <p>{{ details[0]['overview'] }}</p>
+                        <p><b>Stars:</b>&nbsp;{{ actors }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="card">
+        <div class="seasons-container">
+            <h3 align="center">Seasons</h3>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Overview</th>
+              </tr>
+            </thead>
+            <tbody id="seasons_of_show">
+            {% for season in seasons %}
+              <tr>
+                <td>{{season.season_number}}</td>
+                <td>{{season.title}}</td>
+                  {% if season.overview != None %}
+                    <td>{{season.overview}}</td>
+                      {%  else %}
+                        <td>-</td>
+                    {% endif %}
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+{% endblock %}
